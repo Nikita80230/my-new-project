@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
   PAUSE,
@@ -8,22 +8,31 @@ import {
   PURGE,
   REGISTER,
   REHYDRATE,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import { cartReducer } from "./cart/cartSlice";
+import { cartReducer } from './cart/cartSlice';
+import { pharmacyReducer } from './pharmacy/pharmacySlice';
 
 const cartPersistConfig = {
-  key: "cart",
+  key: 'cart',
+  storage,
+  //   whitelist: ["refreshToken", "sid"],
+};
+
+const pharmacyPersistConfig = {
+  key: 'pharmacy',
   storage,
   //   whitelist: ["refreshToken", "sid"],
 };
 
 const persistedAuthReducer = persistReducer(cartPersistConfig, cartReducer); //
+const persistedPharmacyReducer = persistReducer(pharmacyPersistConfig, pharmacyReducer); //
 
 const store = configureStore({
   reducer: {
-    auth: persistedAuthReducer,
+    cart: persistedAuthReducer,
+    pharmacy: persistedPharmacyReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

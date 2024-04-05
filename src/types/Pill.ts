@@ -3,4 +3,5 @@ export type Pill = {
   medicineTitle: string;
   pharmacy: string;
   price: number;
+  pillImg: string;
 };

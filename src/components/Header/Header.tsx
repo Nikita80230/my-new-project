@@ -1,7 +1,24 @@
-import { StyledHeader } from "./Styled";
+import { NavLink } from 'react-router-dom';
+import { StyledHeader } from './Styled';
+import { RoutePath } from '@/routes/routes';
+import { Container } from '..';
 
 const Header = () => {
-  return <StyledHeader>Header</StyledHeader>;
+  return (
+    <StyledHeader>
+      <Container>
+        <nav className="navigation">
+          <NavLink className="link" to={RoutePath.MAIN}>
+            Shop
+          </NavLink>
+          <div className="divider"></div>
+          <NavLink className="link" to={RoutePath.CART}>
+            Shopping cart
+          </NavLink>
+        </nav>
+      </Container>
+    </StyledHeader>
+  );
 };
 
 export default Header;

@@ -1,14 +1,14 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'; //, PayloadAction
 
 type InitialAuthState = {};
 
 const initialAuthState: InitialAuthState = {};
 
 const cartSlice = createSlice({
-  name: "auth",
+  name: 'cart',
   initialState: initialAuthState,
   reducers: {},
-  extraReducers: (builder) => {},
+  // extraReducers: builder => {},
 });
 
 export const cartReducer = cartSlice.reducer;
