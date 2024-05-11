@@ -1,7 +1,7 @@
 import { CartItemsList, FormComponent } from '@/components';
 import { StyledShoppingCartPage } from './Styled';
 import { useFormik } from 'formik';
-import { useAppDispatch } from '@/hooks/hooks';
+// import { useAppDispatch } from '@/hooks/hooks';
 
 export type UserFormData = {
   name: string;
@@ -11,7 +11,7 @@ export type UserFormData = {
 };
 
 const ShoppingCartPage = () => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   const formik = useFormik<UserFormData>({
     initialValues: {
