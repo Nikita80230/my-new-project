@@ -2,16 +2,14 @@ import { pills } from '@/data/pills';
 import { Product } from '@/components';
 import { StyledProductList } from './Styled';
 import { useAppSelector } from '@/hooks/hooks';
-import { selectIsPharmacyChosen, selectPharmacy } from '@/redux/pharmacy/pharmacySlice';
+import { selectPharmacy } from '@/redux/pharmacy/pharmacySlice';
 // import { useEffect } from 'react';
 
 const ProductList = () => {
   const pharmacy = useAppSelector(selectPharmacy);
-  const isPharmacy = useAppSelector(selectIsPharmacyChosen);
 
-  const filteredPills = isPharmacy
-    ? pills.filter(pill => pill.pharmacy === pharmacy?.companyName)
-    : pills;
+  const filteredPills =
+    pharmacy !== null ? pills.filter(pill => pill.pharmacy === pharmacy?.companyName) : pills;
 
   return (
     <StyledProductList>

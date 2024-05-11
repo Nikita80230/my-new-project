@@ -11,17 +11,11 @@ import { StyledPharmaciesList } from './Styles';
 
 const PharmaciesList = () => {
   const dispatch = useAppDispatch();
-  const pharmacy = useAppSelector(selectPharmacy);
+  const selectedPharmacy = useAppSelector(selectPharmacy);
 
-  const handleClick = (pharmacyObj: Pharmacy, event: React.MouseEvent<HTMLButtonElement>) => {
-    const elementClass = event.currentTarget.classList;
-
-    elementClass.value.includes('active')
-      ? elementClass.remove('active')
-      : elementClass.add('active');
-
-    if (pharmacy?.id === pharmacyObj.id) dispatch(unSetChosenPharmacy());
-    if (pharmacy?.id !== pharmacyObj.id) dispatch(setChosenPharmacy(pharmacyObj));
+  const handleClick = (pharmacyObj: Pharmacy) => {
+    if (selectedPharmacy?.id === pharmacyObj.id) dispatch(unSetChosenPharmacy());
+    if (selectedPharmacy?.id !== pharmacyObj.id) dispatch(setChosenPharmacy(pharmacyObj));
   };
 
   return (
@@ -30,10 +24,10 @@ const PharmaciesList = () => {
         pharmacies.map(pharmacy => {
           return (
             <button
-              className="pharmacyBtn"
+              className={`pharmacyBtn ${pharmacy.companyName === selectedPharmacy?.companyName ? 'active' : ''}`}
               key={pharmacy.id}
               type="button"
-              onClick={event => handleClick(pharmacy, event)}
+              onClick={() => handleClick(pharmacy)}
             >
               {pharmacy.companyName}
             </button>

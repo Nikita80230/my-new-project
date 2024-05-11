@@ -5,3 +5,7 @@ export type Pill = {
   price: number;
   pillImg: string;
 };
+
+export type CartPill = Pill & {
+  quantity: number;
+};

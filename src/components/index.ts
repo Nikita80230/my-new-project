@@ -4,3 +4,6 @@ export { default as PageLayout } from './PageLayout/PageLayout';
 export { default as PharmaciesList } from './PharmaciesList/PharmaciesList';
 export { default as ProductList } from './ProductList/ProductList';
 export { default as Product } from './Product/Product';
+export { default as FormComponent } from './FormComponent/FormComponent';
+export { default as CartItemsList } from './CartItemsList/CartItemsList';
+export { default as Input } from './InputGroup/InputGroup';

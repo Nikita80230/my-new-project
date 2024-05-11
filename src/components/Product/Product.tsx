@@ -1,12 +1,22 @@
 import { FC } from 'react';
 import { Pill } from '@/types/Pill';
 import { StyledProduct } from './Styled';
+import { useAppDispatch } from '@/hooks/hooks';
+import { addToCart } from '@/redux/cart/cartSlice';
+import Notiflix from 'notiflix';
 
 type Props = {
   pill: Pill;
 };
 
 const Product: FC<Props> = ({ pill }) => {
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = (pill: Pill) => {
+    dispatch(addToCart(pill));
+    Notiflix.Notify.success('Item was added to cart');
+  };
+
   return (
     <StyledProduct>
       <div className="card">
@@ -16,7 +26,7 @@ const Product: FC<Props> = ({ pill }) => {
           <span className="pillPrice">${pill.price}</span>
         </div>
         <span className="pillPharmacyName">{pill.pharmacy}</span>
-        <button className="pillAddBtn" type="button">
+        <button className="pillAddBtn" type="button" onClick={() => handleAddToCart(pill)}>
           Add to cart
         </button>
       </div>

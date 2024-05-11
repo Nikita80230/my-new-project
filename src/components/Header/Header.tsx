@@ -5,7 +5,7 @@ import { Container } from '..';
 
 const Header = () => {
   return (
-    <StyledHeader>
+    <StyledHeader data-testid="header">
       <Container>
         <nav className="navigation">
           <NavLink className="link" to={RoutePath.MAIN}>
